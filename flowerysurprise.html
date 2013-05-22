@@ -10,9 +10,22 @@
   {{#if showHomePage}}
     {{>home}}
   {{/if}}
+  {{#if showSendFlowersPage}}
+    {{>sendFlowers}}
+  {{/if}}
+  <p><i>{{currentPageName}}</i></p>
 </template>
 
 <template name="home">
   <h1>Welcome to FlowerySurprise</h1>
-  {{loginButtons}}
+  <p>{{loginButtons}}</p>
+  {{#if currentUser}}
+    <p><input type="button" id="send_flowers_btn" value="Send Flowers"/></p>
+  {{else}}
+    <p><i>Log in to send flowers!</i></p>
+  {{/if}}
+</template>
+
+<template name="sendFlowers">
+  <h1>Who are you sending flowers to?</h1>
 </template>
