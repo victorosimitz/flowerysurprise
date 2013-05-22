@@ -13,6 +13,9 @@
   {{#if showSendFlowersPage}}
     {{>sendFlowers}}
   {{/if}}
+  {{#if showPayForFlowersPage}}
+    {{>payForFlowers}}
+  {{/if}}
   <p><i>{{currentPageName}}</i></p>
 </template>
 
@@ -26,6 +29,68 @@
   {{/if}}
 </template>
 
+<template name="payForFlowers">
+  <h1>Who is paying for the flowers?</h1>
+  <p>We will use Stripe to handle this!</p>
+</template>
+
 <template name="sendFlowers">
   <h1>Who are you sending flowers to?</h1>
+  <div class="row">
+    <div class="span6">
+      <form class="form-horizontal">
+        <div class="control-group">
+		  <label class="control-label" for="title">Name: </label>
+		  <div class="controls">
+		    <input type="text" id="name" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">Address: </label>
+		  <div class="controls">
+		    <input type="text" id="address" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">City: </label>
+		  <div class="controls">
+		    <input type="text" id="city" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">State: </label>
+		  <div class="controls">
+		    <input type="text" id="state" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">ZIP: </label>
+		  <div class="controls">
+		    <input type="text" id="zip" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="phone">Phone: </label>
+		  <div class="controls">
+		    <input type="text" id="phone" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">Special Instructions: </label>
+		  <div class="controls">
+		    <input type="text" id="special_instructions" value=""/> 
+		  </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="title">Note: </label>
+		  <div class="controls">
+		    <input type="text" id="note" value=""/> 
+		  </div>
+		</div>
+		<div class="controls">
+		  <input type="button" class="btn btn-primary" id="continue" value="Continue">
+		</div>
+	  </form>
+	</div>
+  </div>
 </template>
