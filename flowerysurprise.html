@@ -19,7 +19,7 @@
   {{#if showOrderConfirmationPage}}
     {{>orderConfirmation}}
   {{/if}}
-  <p><i>{{currentPageName}}</i></p>
+  <!--<p><i>{{currentPageName}}</i></p>-->
 </template>
 
 <template name="home">
@@ -38,31 +38,31 @@
     <div class="span6">
       <form class="form-horizontal">
         <div class="control-group">
-		  <label class="control-label" for="title">Name: </label>
+		  <label class="control-label" for="name">Name: </label>
 		  <div class="controls">
 		    <input type="text" id="name" value=""/> 
 		  </div>
 		</div>
 		<div class="control-group">
-		  <label class="control-label" for="title">Address: </label>
+		  <label class="control-label" for="address">Address: </label>
 		  <div class="controls">
 		    <input type="text" id="address" value=""/> 
 		  </div>
 		</div>
 		<div class="control-group">
-		  <label class="control-label" for="title">City: </label>
+		  <label class="control-label" for="city">City: </label>
 		  <div class="controls">
 		    <input type="text" id="city" value=""/> 
 		  </div>
 		</div>
 		<div class="control-group">
-		  <label class="control-label" for="title">State: </label>
+		  <label class="control-label" for="state">State: </label>
 		  <div class="controls">
 		    <input type="text" id="state" value=""/> 
 		  </div>
 		</div>
 		<div class="control-group">
-		  <label class="control-label" for="title">ZIP: </label>
+		  <label class="control-label" for="zip">ZIP: </label>
 		  <div class="controls">
 		    <input type="text" id="zip" value=""/> 
 		  </div>
@@ -74,17 +74,17 @@
 		  </div>
 		</div>
 		<div class="control-group">
-		  <label class="control-label" for="title">Special Instructions: </label>
+		  <label class="control-label" for="special_instructions">Special Instructions: </label>
 		  <div class="controls">
 		    <input type="text" id="special_instructions" value=""/> 
 		  </div>
 		</div>
-		<div class="control-group">
-		  <label class="control-label" for="title">Note: </label>
+		<!--<div class="control-group">
+		  <label class="control-label" for="note">Note: </label>
 		  <div class="controls">
 		    <input type="text" id="note" value=""/> 
 		  </div>
-		</div>
+		</div>-->
 		<div class="controls">
 		  <input type="button" class="btn btn-primary" id="continue" value="Continue">
 		</div>
@@ -95,7 +95,7 @@
 
 <template name="payForFlowers">
   <h1>Who is paying for the flowers?</h1>
-  <p>We will use Stripe to handle this!</p>
+  <p>We will use Stripe to handle this! Order id: {{orderId}}</p>
   <p><input type="button" class="btn btn-primary" id="finish_order_btn" value="Finish Order"/></p>
 </template>
 

@@ -39,9 +39,11 @@ if (Meteor.isClient) {
 	return (getCurrentPageName()=="sendFlowers");
   };
   
-  var switchToPayForFlowersPage = function(message)
+  var switchToPayForFlowersPage = function(order_id, message)
   {
-    Session.set("showScreen",{screen_name: "payForFlowers", message:message});
+    if(!order_id)
+      return; //do nothing if we don't have an order id to attach to
+    Session.set("showScreen",{screen_name:"payForFlowers", order_id:order_id, message:message});
   };
   
   Template.page.showPayForFlowersPage = function()
@@ -69,9 +71,33 @@ if (Meteor.isClient) {
   
   //sendFlowers template
   
-  Template.sendFlowers.events({
+  Template.sendFlowers.events({  //TODO fix the commented code -- there is some bug there
     "click #continue": function(){
-      switchToPayForFlowersPage();
+      name = document.getElementById("name").value.trim();
+      address = document.getElementById("address").value.trim();
+      city = document.getElementById("city").value.trim();
+      state = document.getElementById("state").value.trim();
+      zip = document.getElementById("zip").value.trim();
+      phone = document.getElementById("phone").value.trim();
+      special_instructions = document.getElementById("special_instructions").value.trim();
+      order_data = {name: name,
+                    dest: {address: address,
+                           city: city,
+                           state: state,
+                           zip: zip},
+                    phone: phone,
+                    special_instructions: special_instructions};
+      alert(JSON.stringify(order_data));
+      Meteor.call("createOrder",order_data, function(e, r){
+        if(!e)
+        {
+          switchToPayForFlowersPage(r /*order id*/);
+        }
+        else{
+          alert(JSON.stringify(e));
+        }
+      });
+//       switchToPayForFlowersPage("abc"); //call with temporary dummy id
     }
   });
   
@@ -82,6 +108,10 @@ if (Meteor.isClient) {
       switchToOrderConfirmationPage();
     }
   });
+  
+  Template.payForFlowers.orderId = function(){
+    return Session.get("showScreen").order_id || "[unset]";
+  };
   
   //orderConfirmation template
   
