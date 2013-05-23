@@ -49,6 +49,16 @@ if (Meteor.isClient) {
     return (getCurrentPageName()=="payForFlowers");
   };
   
+  var switchToOrderConfirmationPage = function(message)
+  {
+    Session.set("showScreen",{screen_name: "orderConfirmation", message:message});
+  };
+  
+  Template.page.showOrderConfirmationPage = function()
+  {
+    return (getCurrentPageName()=="orderConfirmation");
+  };
+  
   //home template 
  
   Template.home.events({
@@ -68,7 +78,17 @@ if (Meteor.isClient) {
   //payForFlowers template
   
   Template.payForFlowers.events({
-    
+    "click #finish_order_btn": function(){
+      switchToOrderConfirmationPage();
+    }
+  });
+  
+  //orderConfirmation template
+  
+  Template.orderConfirmation.events({
+    "click #send_another_btn": function(){
+      switchToHomePage();
+    }
   });
 }
 

@@ -16,6 +16,9 @@
   {{#if showPayForFlowersPage}}
     {{>payForFlowers}}
   {{/if}}
+  {{#if showOrderConfirmationPage}}
+    {{>orderConfirmation}}
+  {{/if}}
   <p><i>{{currentPageName}}</i></p>
 </template>
 
@@ -27,11 +30,6 @@
   {{else}}
     <p><i>Log in to send flowers!</i></p>
   {{/if}}
-</template>
-
-<template name="payForFlowers">
-  <h1>Who is paying for the flowers?</h1>
-  <p>We will use Stripe to handle this!</p>
 </template>
 
 <template name="sendFlowers">
@@ -93,4 +91,15 @@
 	  </form>
 	</div>
   </div>
+</template>
+
+<template name="payForFlowers">
+  <h1>Who is paying for the flowers?</h1>
+  <p>We will use Stripe to handle this!</p>
+  <p><input type="button" class="btn btn-primary" id="finish_order_btn" value="Finish Order"/></p>
+</template>
+
+<template name="orderConfirmation">
+  <h1>Thanks!</h1>
+  <p><a href="#" id="send_another_btn">Send Another Flowery Surprise</a></p>
 </template>
